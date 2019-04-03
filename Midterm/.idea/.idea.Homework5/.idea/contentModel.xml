@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\177sma\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\177sma\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Homework5.-1575952862.00" t="ExcludeRecursive" />
+    <e p="D:\@@@NYU@@@\Semester 2\CodeLab1\CodeLab1-2019-HW5\Homework5" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Files" t="Include">
+          <e p="level0.txt" t="Include" />
+          <e p="level1.txt" t="Include" />
+          <e p="level2.txt" t="Include" />
+          <e p="level3.txt" t="Include" />
+        </e>
+        <e p="Script" t="Include">
+          <e p="GameManager.cs" t="Include" />
+          <e p="LevelFinished.cs" t="Include" />
+          <e p="LevelGenerator.cs" t="Include" />
+          <e p="MovingCamera.cs" t="Include" />
+          <e p="PlayerControl.cs" t="Include" />
+          <e p="Trap.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Homework5.sln" t="IncludeFlat" />
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>
