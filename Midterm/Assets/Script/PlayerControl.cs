@@ -17,10 +17,13 @@ public class PlayerControl : MonoBehaviour
     public int MaxAttackStage;
     public float HitRecover;
     public LayerMask groundLayer;
+    public List<GameObject> attackType;
+    public List<float> attackDelay;
 
     private Vector2 SpeedH = new Vector2(0, 0);
     private Vector2 SpeedV = new Vector2(0, 0);
     private Rigidbody2D rb;
+    private GameObject attackPoint;
 
     [Header("Game Stat")]
     public Animator animator;
@@ -37,6 +40,7 @@ public class PlayerControl : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         SpeedH.Set(MovingSpeed, 0);
         SpeedV.Set(0, JumpingSpeed);
+        attackPoint = transform.Find("AttackPoint").gameObject;
     }
     
     void Update()
@@ -81,11 +85,11 @@ public class PlayerControl : MonoBehaviour
             } 
                     
             //Jump & Fall
-            animator.SetBool("Jump", false);
             if (grounded && Input.GetKeyDown(Jump))
             {
                 rb.velocity += SpeedV;
                 animator.SetBool("Jump", true);
+                Invoke("Unjump", 0.2f);
             }
     
             if (rb.velocity.y > 0)
@@ -128,11 +132,12 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        if (!injured && Input.GetKeyDown(Attack) && AttackStage < MaxAttackStage && ComboBar < 30)
+        if (!injured && Input.GetKeyDown(Attack) && AttackStage < MaxAttackStage && ComboBar < ComboFrameRange)
         {
             AttackStage++;
             animator.SetInteger("AttackStage", AttackStage);
-            ComboBar += ComboFrameRange;        
+            StartCoroutine(AttackGenerated(attackType[AttackStage - 1], attackDelay[AttackStage - 1] + ComboBar * Time.deltaTime));
+            ComboBar += ComboFrameRange;            
         }
     }
 
@@ -141,5 +146,17 @@ public class PlayerControl : MonoBehaviour
         injured = false;
         animator.SetBool("Injured", false);
         retreating = false;
+    }
+
+    void Unjump()
+    {
+        animator.SetBool("Jump", false);
+    }
+
+    IEnumerator AttackGenerated(GameObject attckObject, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        GameObject bullet = Instantiate(attckObject, attackPoint.transform.position, Quaternion.identity);
+        bullet.GetComponent<Attack>().direction.x = transform.localScale.x / Mathf.Abs(transform.localScale.x);
     }
 }
