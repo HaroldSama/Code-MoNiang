@@ -1,0 +1,15 @@
+{
+    "pageNumber": 1,
+    "questionText": "Huadiao the Zombie: Hi! Wanderer. What are you looking for?",
+    "option1Text": "Tell the Truth",
+    "option2Text": "Tell a Lie",
+    "option3Text": "Not Sure",
+    "optionPage": [
+        2,
+        3,
+        0
+    ],
+    "option1Display": true,
+    "option2Display": true,
+    "option3Display": false
+}

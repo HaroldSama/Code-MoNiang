@@ -1,0 +1,15 @@
+{
+    "pageNumber": 20,
+    "questionText": "This is a default question text.",
+    "option1Text": "Yes",
+    "option2Text": "No",
+    "option3Text": "Not Sure",
+    "optionPage": [
+        0,
+        0,
+        0
+    ],
+    "option1Display": false,
+    "option2Display": false,
+    "option3Display": false
+}

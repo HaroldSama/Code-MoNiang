@@ -1,0 +1,15 @@
+{
+    "pageNumber": 4,
+    "questionText": "Huadiao the Zombie: He's not gonna to see you, cuz you are a FAILURE.",
+    "option1Text": "Yes",
+    "option2Text": "No",
+    "option3Text": "Not Sure",
+    "optionPage": [
+        5,
+        6,
+        0
+    ],
+    "option1Display": true,
+    "option2Display": true,
+    "option3Display": false
+}
