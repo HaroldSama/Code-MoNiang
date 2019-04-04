@@ -9,7 +9,12 @@ public class SuperSuperAttack : Attack
     {
         effectTime = 5;
         velocity = Vector2.right;
-        //gameObject.GetComponent<Rigidbody2D>().velocity = velocity * direction.x;
+        if (direction.x < 0)
+        {
+            Vector3 CharScale = transform.localScale;
+            CharScale.x *= -1;
+            transform.localScale = CharScale;
+        }
         Invoke("Expire", effectTime);
     }
 
@@ -17,15 +22,11 @@ public class SuperSuperAttack : Attack
     void Update()
     {
         Vector3 add = velocity * direction.x;
-        transform.position += add / 30;
+        transform.position += add / 15;
     }
     
     void OnCollisionEnter2D(Collision2D other)
     {
-        /*if (!other.CompareTag("Player"))
-        {*/
-            print("Hit");
-            Destroy(gameObject);
-        //}
+        Hit(other);
     }
 }

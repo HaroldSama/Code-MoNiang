@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SuperAttack : Attack
+public class EffectDisappear : MonoBehaviour
 {
+    public float duration;
     // Start is called before the first frame update
     void Start()
     {
-        force *= 10000;
-        Invoke("Expire", effectTime);
+        Invoke("Disappear", duration);
     }
 
     // Update is called once per frame
@@ -16,9 +16,9 @@ public class SuperAttack : Attack
     {
         
     }
-    
-    void OnCollisionEnter2D(Collision2D other)
+
+    void Disappear()
     {
-        Hit(other);
+        Destroy(gameObject);
     }
 }

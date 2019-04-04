@@ -6,7 +6,7 @@ public class Attack : MonoBehaviour
 {
     public float damage = 5;
     public Vector2 velocity = Vector2.zero;
-    public Vector2 force = Vector2.right;
+    public Vector2 force = new Vector2(100,0);
     public float effectTime = 0.2f;
     
     public Vector2 direction = Vector2.zero;
@@ -23,12 +23,9 @@ public class Attack : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (!other.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
+        Hit(other);
     }
 
     void Expire()
@@ -36,8 +33,13 @@ public class Attack : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void Hit()
+    protected void Hit(Collision2D coll)
     {
-        
+        if (!coll.gameObject.CompareTag("Player"))
+        {
+            print("Hit");
+            Destroy(gameObject);
+            Instantiate(Resources.Load("Prefabs/AttackEffect"), coll.contacts[Random.Range(0,coll.contacts.Length)].point, Quaternion.identity);
+        }
     }
 }
