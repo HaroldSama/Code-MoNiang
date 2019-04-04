@@ -55,8 +55,9 @@ public class DialogTrigger : MonoBehaviour
         if (currentNode.pageNumber == 20)
         {
             PlayerControl.freezed = false;
-            Destroy(gameObject);
+            transform.parent.transform.Find("CastPoint").GetComponent<BossCast>().castReady = true;
             print("Fight!");
+            Destroy(gameObject);
         }
         
         questionText.text = node.questionText;
