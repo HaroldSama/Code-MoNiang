@@ -21,7 +21,7 @@ public class LevelFinished : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance.level = (GameManager.Instance.level + 1) % GameManager.Instance.maxLevel;
+            GameManager.Instance.Level = (GameManager.Instance.Level + 1) % GameManager.Instance.maxLevel;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
