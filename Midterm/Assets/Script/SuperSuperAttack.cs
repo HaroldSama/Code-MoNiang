@@ -9,12 +9,14 @@ public class SuperSuperAttack : Attack
     {
         effectTime = 5;
         velocity = Vector2.right;
+        
         if (direction.x < 0)
         {
             Vector3 CharScale = transform.localScale;
             CharScale.x *= -1;
             transform.localScale = CharScale;
         }
+        
         Invoke("Expire", effectTime);
     }
 

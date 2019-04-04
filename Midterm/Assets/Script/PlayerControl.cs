@@ -25,7 +25,8 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D rb;
     private GameObject attackPoint;
 
-    [Header("Game Stat")]
+    [Header("Game Stat")] 
+    public static bool freezed;
     public Animator animator;
     public bool FacingRight = true;
     public int AttackStage;
@@ -70,11 +71,30 @@ public class PlayerControl : MonoBehaviour
             retreating = true;
             Invoke("Recover", HitRecover);
         }
+        
+        //Charge        
+        if (ComboBar > 0)
+        {
+            ComboBar--;
+            if (ComboBar == 0)
+            {
+                AttackStage = 0;
+                animator.SetInteger("AttackStage", AttackStage);
+            }
+        }
 
         if (!injured)
         {
             //Walk
-            rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * MovingSpeed, rb.velocity.y);
+            if (!freezed)
+            {
+                rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * MovingSpeed, rb.velocity.y);
+            }
+            else
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
+            
             if (grounded && rb.velocity.x != 0)
             {
                 animator.SetBool("Walking", true);
@@ -85,7 +105,7 @@ public class PlayerControl : MonoBehaviour
             } 
                     
             //Jump & Fall
-            if (grounded && Input.GetKeyDown(Jump))
+            if (grounded && Input.GetKeyDown(Jump) && !freezed)
             {
                 rb.velocity += SpeedV;
                 animator.SetBool("Jump", true);
@@ -110,6 +130,15 @@ public class PlayerControl : MonoBehaviour
                 animator.SetBool("Falling", false);
             }
             
+            //Attack
+            if (!freezed && Input.GetKeyDown(Attack) && AttackStage < MaxAttackStage && ComboBar < ComboFrameRange)
+            {
+                AttackStage++;
+                animator.SetInteger("AttackStage", AttackStage);
+                StartCoroutine(AttackGenerated(attackType[AttackStage - 1], attackDelay[AttackStage - 1] + ComboBar * Time.deltaTime));
+                ComboBar += ComboFrameRange;            
+            }  
+            
             //Flip
             if (!injured && ((rb.velocity.x < 0 && FacingRight) || (rb.velocity.x > 0 && !FacingRight)))
             {
@@ -118,26 +147,6 @@ public class PlayerControl : MonoBehaviour
                 CharScale.x *= -1;
                 transform.localScale = CharScale;        
             }        
-        }
-
-        
-        //Attack        
-        if (ComboBar > 0)
-        {
-            ComboBar--;
-            if (ComboBar == 0)
-            {
-                AttackStage = 0;
-                animator.SetInteger("AttackStage", AttackStage);
-            }
-        }
-
-        if (!injured && Input.GetKeyDown(Attack) && AttackStage < MaxAttackStage && ComboBar < ComboFrameRange)
-        {
-            AttackStage++;
-            animator.SetInteger("AttackStage", AttackStage);
-            StartCoroutine(AttackGenerated(attackType[AttackStage - 1], attackDelay[AttackStage - 1] + ComboBar * Time.deltaTime));
-            ComboBar += ComboFrameRange;            
         }
     }
 
