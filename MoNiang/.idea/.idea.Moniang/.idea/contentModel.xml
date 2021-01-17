@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\177sma\AppData\local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\177sma\AppData\local\JetBrains\Rider2020.1\resharper-host\local\Transient\ReSharperHost\v201\SolutionCaches\_MoNiang.799289207.00" t="ExcludeRecursive" />
+    <e p="D:\@@@MyPrograms@@@\Code MoNiang\MoNiang" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Files" t="Include">
+          <e p="CurrentLevel.txt" t="Include" />
+          <e p="level0.txt" t="Include" />
+          <e p="level1.txt" t="Include" />
+          <e p="level2.txt" t="Include" />
+          <e p="level3.txt" t="Include" />
+        </e>
+        <e p="Script" t="Include">
+          <e p="Attack.cs" t="Include" />
+          <e p="BossCast.cs" t="Include" />
+          <e p="DialogTrigger.cs" t="Include" />
+          <e p="EffectDisappear.cs" t="Include" />
+          <e p="EnemyBehavior.cs" t="Include" />
+          <e p="GameManager.cs" t="Include" />
+          <e p="Health.cs" t="Include" />
+          <e p="LevelFinished.cs" t="Include" />
+          <e p="LevelGenerator.cs" t="Include" />
+          <e p="MovingCamera.cs" t="Include" />
+          <e p="PlayerControl.cs" t="Include" />
+          <e p="QANode.cs" t="Include" />
+          <e p="SuperAttack.cs" t="Include" />
+          <e p="SuperSuperAttack.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Moniang.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
